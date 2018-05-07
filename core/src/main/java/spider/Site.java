@@ -12,7 +12,7 @@ public class Site {
     // 默认头信息
     private Map<String, String> defaultHeaders = new HashMap<String, String>();
     // 编码
-    private String charset;
+    private String charset = "utf8";
     // 每次任务间隔时间
     private int sleepTime = 5000;
     // 超时重试次数
