@@ -1,0 +1,7 @@
+target/
+.DS_STORE/
+.setting/*
+**/.idea
+*.iml
+
+.idea/*
