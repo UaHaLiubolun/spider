@@ -1,10 +1,22 @@
 package spider;
 
+import java.util.List;
+
 public class Page {
 
     private Request request;
 
     private String rawText;
+
+    private List<Request> newRequests;
+
+    public List<Request> getNewRequests() {
+        return newRequests;
+    }
+
+    public void setNewRequests(List<Request> newRequests) {
+        this.newRequests = newRequests;
+    }
 
     public Request getRequest() {
         return request;

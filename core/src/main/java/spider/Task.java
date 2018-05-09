@@ -8,6 +8,11 @@ public class Task {
 
     private Request request;
 
+    public Task(Site site, Request request) {
+        this.site = site;
+        this.request = request;
+    }
+
     public String getUuid() {
         return uuid;
     }

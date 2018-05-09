@@ -65,15 +65,15 @@ public class Downloader {
         return page;
     }
 
+    public void setThread(int size) {
+        httpClientGenerator.setPoolSize(size);
+    }
+
     public static void main(String[] args) {
-        Task task = new Task();
         Site site = new Site();
         Request request = new Request();
         site.setDomain("www.baidu.com");
-        task.setSite(site);
-        task.setRequest(request);
         request.setUrl("http://baike.baidu.com/search/word?word=水力发电&pic=1&sug=1&enc=utf8");
         Downloader downloader = new Downloader();
-        downloader.downloader(task);
     }
 }

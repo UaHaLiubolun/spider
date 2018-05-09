@@ -23,7 +23,7 @@ public class CountableThreadPool {
         this.executorService = Executors.newFixedThreadPool(threadNum);
     }
 
-    public void excute(final Runnable runnable) {
+    public void execute(final Runnable runnable) {
         if (threadAlive.get() >= threadNum) {
             try {
                 reentrantLock.lock();
@@ -58,5 +58,9 @@ public class CountableThreadPool {
 
     public void shutdown() {
         executorService.shutdown();
+    }
+
+    public AtomicInteger getThreadAlive() {
+        return threadAlive;
     }
 }

@@ -9,7 +9,6 @@ public class QueueScheduler implements Scheduler {
 
     private BlockingQueue<Task> queue = new LinkedBlockingQueue<Task>();
 
-
     public int getSize() {
         return queue.size();
     }
