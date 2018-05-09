@@ -21,7 +21,6 @@ public class Downloader {
 
     private HttpRequestConvert httpUriRequestConverter = new HttpRequestConvert();
 
-
     private CloseableHttpClient getHttpClient(Site site) {
         if (site == null) return httpClientGenerator.getClient(null);
         String domain = site.getDomain();
@@ -63,7 +62,6 @@ public class Downloader {
         byte[] bytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
         Page page = new Page();
         page.setRawText(new String(bytes, task.getSite().getCharset()));
-        System.out.println(page.getRawText());
         return page;
     }
 
