@@ -10,6 +10,13 @@ public class Request implements Serializable {
 
     private static final long serialVersionUID = 2062192774891352043L;
 
+    public Request() {}
+
+    public Request(String url, PageFilter filter) {
+        this.filter = filter;
+        this.url = url;
+    }
+
     private PageFilter filter;
 
     private String url;

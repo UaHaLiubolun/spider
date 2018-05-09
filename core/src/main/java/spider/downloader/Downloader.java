@@ -45,12 +45,13 @@ public class Downloader {
         Page page = new Page();
         CloseableHttpClient httpClient = getHttpClient(task.getSite());
         HttpClientRequestContext requestContext = httpUriRequestConverter.convert(task);
+        System.out.println(task.getRequest().getUrl());
         try {
              httpResponse = httpClient.execute(requestContext.getHttpUriRequest(),
                     requestContext.getHttpClientContext());
              page = handleResponse(task, httpResponse);
         } catch (IOException e) {
-
+            e.printStackTrace();
         } finally {
             if (httpResponse != null)
                 EntityUtils.consumeQuietly(httpResponse.getEntity());
@@ -62,18 +63,11 @@ public class Downloader {
         byte[] bytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
         Page page = new Page();
         page.setRawText(new String(bytes, task.getSite().getCharset()));
+        page.setRequest(task.getRequest());
         return page;
     }
 
     public void setThread(int size) {
         httpClientGenerator.setPoolSize(size);
-    }
-
-    public static void main(String[] args) {
-        Site site = new Site();
-        Request request = new Request();
-        site.setDomain("www.baidu.com");
-        request.setUrl("http://baike.baidu.com/search/word?word=水力发电&pic=1&sug=1&enc=utf8");
-        Downloader downloader = new Downloader();
     }
 }

@@ -1,6 +1,7 @@
 package spider;
 
 import spider.downloader.Downloader;
+import spider.pipeline.Pipeline;
 import spider.scheduler.QueueScheduler;
 import spider.scheduler.Scheduler;
 import spider.thread.CountableThreadPool;
@@ -50,7 +51,6 @@ public class Spider implements Runnable{
         initComponent();
         while (!Thread.currentThread().isInterrupted()) {
             final Task task = scheduler.poll();
-            System.out.println(threadPool.getThreadAlive());
             if (task == null && threadPool.getThreadAlive().get() == 0) {
                 threadPool.shutdown();
                 // 判断是否时停止
@@ -79,6 +79,11 @@ public class Spider implements Runnable{
 
     private void onDownloadSuccess(Task task, Page page) {
         task.getRequest().getFilter().filter(page);
+        if (page.getPipelines() != null) {
+            for (Pipeline pipeline : page.getPipelines()) {
+                pipeline.save(page);
+            }
+        }
         addPageTask(page);
     }
 
