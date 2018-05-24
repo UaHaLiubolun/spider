@@ -1,7 +1,8 @@
 target/
 .DS_STORE/
-.setting/*
+.setting/
 **/.idea
 *.iml
 core/target/
-.idea/*
+.idea/
+core/core.iml
