@@ -60,6 +60,7 @@ public class Spider implements Runnable{
                     public void run() {
                         try {
                             processTask(task);
+                            if (task.getSite().getSleepTime() != 0) Thread.sleep(task.getSite().getSleepTime());
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {

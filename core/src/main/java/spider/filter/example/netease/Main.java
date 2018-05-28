@@ -15,7 +15,7 @@ public class Main {
         Request request = new Request("http://music.163.com/discover/playlist", new CatFilter());
         List<Request> requests = new ArrayList<Request>();
         requests.add(request);
-        Spider spider = new Spider(10, site, requests);
+        Spider spider = new Spider(1, site, requests);
         spider.run();
     }
 }

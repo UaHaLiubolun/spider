@@ -13,8 +13,8 @@ public class Site {
     private Map<String, String> defaultHeaders = new HashMap<String, String>();
     // 编码
     private String charset = "utf8";
-    // 每次任务间隔时间
-    private int sleepTime = 5000;
+    // 每次任务间隔时间 ms
+    private int sleepTime = 0;
     // 超时重试次数
     private int retryTimes = 0;
     // 超时时间

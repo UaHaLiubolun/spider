@@ -1,12 +1,15 @@
 package spider.downloader;
 
 
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import spider.Request;
 import spider.Task;
 import spider.utils.UrlUtils;
@@ -18,9 +21,25 @@ public class HttpRequestConvert {
     public HttpClientRequestContext convert(Task task) {
         HttpClientRequestContext httpClientRequestContext = new HttpClientRequestContext();
         httpClientRequestContext.setHttpUriRequest(convertHttpUriRequest(task));
-        httpClientRequestContext.setHttpClientContext(new HttpClientContext());
+        httpClientRequestContext.setHttpClientContext(convertHttpClientContext(task));
         return httpClientRequestContext;
     }
+
+
+    private HttpClientContext convertHttpClientContext(Task task) {
+        HttpClientContext httpContext = new HttpClientContext();
+        if (task.getRequest().getCookies() != null && !task.getRequest().getCookies().isEmpty()) {
+            CookieStore cookieStore = new BasicCookieStore();
+            for (Map.Entry<String, String> cookieEntry : task.getRequest().getCookies().entrySet()) {
+                BasicClientCookie cookie1 = new BasicClientCookie(cookieEntry.getKey(), cookieEntry.getValue());
+                cookie1.setDomain(UrlUtils.removePort(UrlUtils.getDomain(task.getRequest().getUrl())));
+                cookieStore.addCookie(cookie1);
+            }
+            httpContext.setCookieStore(cookieStore);
+        }
+        return httpContext;
+    }
+
 
 
     private HttpUriRequest convertHttpUriRequest(Task task) {
