@@ -29,6 +29,8 @@ public class Request implements Serializable {
 
     private HttpRequestBody requestBody;
 
+    private Map<String, Object> meta;
+
     public HttpRequestBody getRequestBody() {
         return requestBody;
     }
@@ -75,5 +77,13 @@ public class Request implements Serializable {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+    public Map<String, Object> getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Map<String, Object> meta) {
+        this.meta = meta;
     }
 }

@@ -25,20 +25,20 @@ public class PlayListFilter implements PageFilter {
 
     private List<Request> getPageRequest(Document document) {
         Elements elements = document.select("a[class='zpgi']");
-        return transToRequest(elements);
+        return transToRequest(elements, new PlayListFilter());
     }
 
     private List<Request> getPlayListsRequest(Document document) {
         Elements elements = document.select("a[class='msk']");
-        return transToRequest(elements);
+        return transToRequest(elements, new PlayListInfoFilter());
     }
 
-    private List<Request> transToRequest(Elements elements) {
+    private List<Request> transToRequest(Elements elements, PageFilter pageFilter) {
         Iterator<Element> iterator = elements.iterator();
         List<Request> newRequests = new ArrayList<Request>();
         while (iterator.hasNext()) {
             Element element = iterator.next();
-            Request request = new Request(url + element.attr("href"), new PlayListInfoFilter());
+            Request request = new Request(url + element.attr("href"), pageFilter);
             newRequests.add(request);
         }
         return newRequests;

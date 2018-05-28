@@ -61,7 +61,7 @@ public class Spider implements Runnable{
                         try {
                             processTask(task);
                         } catch (Exception e) {
-
+                            e.printStackTrace();
                         } finally {
 
                         }
@@ -88,6 +88,7 @@ public class Spider implements Runnable{
     }
 
     private void addPageTask(Page page) {
+        if (page.getNewRequests() == null) return;
         for (Request request : page.getNewRequests()) {
             Task task = new Task(site, request);
             addTask(task);
