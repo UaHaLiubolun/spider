@@ -1,2 +1,10 @@
 .idea/
 spider.iml
+target/
+.DS_STORE/
+.setting/
+**/.idea
+*.iml
+core/target/
+.idea/
+core/core.iml
