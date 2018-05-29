@@ -1,6 +1,7 @@
 package spider.downloader;
 
 
+import org.apache.http.HttpHost;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -28,6 +29,8 @@ public class HttpRequestConvert {
 
     private HttpClientContext convertHttpClientContext(Task task) {
         HttpClientContext httpContext = new HttpClientContext();
+        // 临时设置一个代理
+
         if (task.getRequest().getCookies() != null && !task.getRequest().getCookies().isEmpty()) {
             CookieStore cookieStore = new BasicCookieStore();
             for (Map.Entry<String, String> cookieEntry : task.getRequest().getCookies().entrySet()) {
@@ -58,6 +61,9 @@ public class HttpRequestConvert {
                     .setConnectTimeout(task.getSite().getTimeOut())
                     .setCookieSpec(CookieSpecs.STANDARD);
         }
+
+//        HttpHost proxy = new HttpHost("121.234.245.182", 61234, "http");
+//        requestConfigBuilder.setProxy(proxy);
 
         requestBuilder.setConfig(requestConfigBuilder.build());
         HttpUriRequest httpUriRequest = requestBuilder.build();

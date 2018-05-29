@@ -59,6 +59,7 @@ public class Spider implements Runnable{
                 threadPool.execute(new Runnable() {
                     public void run() {
                         try {
+                            if (task == null) return;
                             processTask(task);
                             if (task.getSite().getSleepTime() != 0) Thread.sleep(task.getSite().getSleepTime());
                         } catch (Exception e) {
