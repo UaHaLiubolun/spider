@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Site site = new Site();
         site.setDomain("music.163.com");
+        site.setSleepTime(2000);
         Request request = new Request("http://music.163.com/discover/playlist", new CatFilter());
         List<Request> requests = new ArrayList<Request>();
         requests.add(request);
