@@ -75,7 +75,10 @@ public class Spider implements Runnable{
 
 
     private void processTask(Task task) {
-        Page page = downloader.downloader(task);
+        Page page = null;
+        while (!task.isSuccess() && task.getRetryTime() <= task.getSite().getRetryCount()) {
+            page = downloader.downloader(task);
+        }
         onDownloadSuccess(task, page);
     }
 

@@ -8,9 +8,33 @@ public class Task {
 
     private Request request;
 
+    private boolean success = false;
+
+    private int retryTime = 0;
+
     public Task(Site site, Request request) {
         this.site = site;
         this.request = request;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void success() {
+        this.success = true;
+    }
+
+    public void setRetryTime(int retryTime) {
+        this.retryTime = retryTime;
+    }
+
+    public int getRetryTime() {
+        return retryTime;
+    }
+
+    public void error() {
+        retryTime ++;
     }
 
     public String getUuid() {

@@ -13,8 +13,11 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import spider.Request;
 import spider.Task;
+import spider.utils.MySQLUtil;
 import spider.utils.UrlUtils;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class HttpRequestConvert {
@@ -62,8 +65,14 @@ public class HttpRequestConvert {
                     .setCookieSpec(CookieSpecs.STANDARD);
         }
 
-//        HttpHost proxy = new HttpHost("121.234.245.182", 61234, "http");
-//        requestConfigBuilder.setProxy(proxy);
+        if (task.getSite().isProxy()) {
+            String proxy = MySQLUtil.getProxy();
+            if (!proxy.equals("")) {
+                String[] tmp = proxy.split(":");
+                HttpHost httpHost = new HttpHost(tmp[0], Integer.parseInt(tmp[1]), "http");
+                requestConfigBuilder.setProxy(httpHost);
+            }
+        }
 
         requestBuilder.setConfig(requestConfigBuilder.build());
         HttpUriRequest httpUriRequest = requestBuilder.build();

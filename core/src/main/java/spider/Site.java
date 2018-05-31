@@ -1,5 +1,7 @@
 package spider;
 
+import org.apache.http.HttpHost;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,10 +17,38 @@ public class Site {
     private String charset = "utf8";
     // 每次任务间隔时间 ms
     private int sleepTime = 0;
-    // 超时重试次数
-    private int retryTimes = 0;
     // 超时时间
     private int timeOut = 5000;
+    // 是否使用自动代理
+    private boolean isProxy = false;
+    // 使用手动代理
+    private HttpHost httpHost;
+    // 重试次数
+    private int retryCount = 0;
+
+    public int getRetryCount() {
+        return retryCount;
+    }
+
+    public void setRetryCount(int retryCount) {
+        this.retryCount = retryCount;
+    }
+
+    public boolean isProxy() {
+        return isProxy;
+    }
+
+    public void setProxy(boolean proxy) {
+        isProxy = proxy;
+    }
+
+    public HttpHost getHttpHost() {
+        return httpHost;
+    }
+
+    public void setHttpHost(HttpHost httpHost) {
+        this.httpHost = httpHost;
+    }
 
     public String getDomain() {
         return domain;
@@ -58,14 +88,6 @@ public class Site {
 
     public void setSleepTime(int sleepTime) {
         this.sleepTime = sleepTime;
-    }
-
-    public int getRetryTimes() {
-        return retryTimes;
-    }
-
-    public void setRetryTimes(int retryTimes) {
-        this.retryTimes = retryTimes;
     }
 
     public int getTimeOut() {

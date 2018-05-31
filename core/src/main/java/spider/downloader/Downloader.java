@@ -50,10 +50,16 @@ public class Downloader {
         HttpClientRequestContext requestContext = httpUriRequestConverter.convert(task);
         System.out.println(task.getRequest().getUrl());
         try {
-             httpResponse = httpClient.execute(requestContext.getHttpUriRequest(),
+            httpResponse = httpClient.execute(requestContext.getHttpUriRequest(),
                     requestContext.getHttpClientContext());
-             page = handleResponse(task, httpResponse);
+            System.out.println(httpResponse.getStatusLine().getStatusCode());
+            if (httpResponse.getStatusLine().getStatusCode() != 200) {
+                throw new IOException();
+            }
+            page = handleResponse(task, httpResponse);
+            task.success();
         } catch (IOException e) {
+            task.error();
             e.printStackTrace();
         } finally {
             if (httpResponse != null)
