@@ -14,11 +14,11 @@ public class Main {
         site.setDomain("music.163.com");
         site.setSleepTime(2000);
         site.setProxy(true);
-        site.setRetryCount(10);
+        site.setRetryCount(5);
         Request request = new Request("http://music.163.com/discover/playlist?order=new", new CatFilter());
         List<Request> requests = new ArrayList<Request>();
         requests.add(request);
-        Spider spider = new Spider(10, site, requests);
+        Spider spider = new Spider(8, site, requests);
         spider.run();
     }
 }
