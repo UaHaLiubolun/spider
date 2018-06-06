@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ConManager {
 
-    private static String mysqlInfo = "jdbc:mysql://localhost/netease?user=root";
+    private static String mysqlInfo = "jdbc:mysql://120.77.47.148/netease?user=root&password=201011.4Wydtx&useUnicode=true&characterEncoding=UTF-8&useSSL=false";
 
 
     public static Connection getCon() {
