@@ -1,0 +1,24 @@
+spring:
+  port: 8080
+
+  datasource:
+    username: haihe2
+    password: Newmeds0bey
+    jdbc-url: jdbc:mysql://rm-2ze83h0t8e160gu42o.mysql.rds.aliyuncs.com:3306/haihe_data_service?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
+
+    # 使用druid
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 1  #连接池支持的最大连接数，这里取值为20，表示同时最多有20个数据库连接。设 0 为没有限制。
+    initialSize: 1  #初始化连接数目
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 1

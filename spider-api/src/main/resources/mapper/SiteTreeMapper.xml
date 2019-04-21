@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamcloud.api.dao.mysql.SiteTreeDao">
+    <cache eviction="LRU"></cache>
+
+    <select id="getByParentId" resultType="com.chinamcloud.api.model.SiteTree" useCache="true">
+        select
+          id, parentId, `name`, sourceId
+        from t_site_tree
+        where parentId = #{parentId}
+    </select>
+
+    <select id="getAll" resultType="com.chinamcloud.api.model.SiteTree" useCache="true">
+         select
+          id, parentId, `name`, sourceId
+        from t_site_tree
+    </select>
+
+    <delete id="delete" flushCache="true">
+        delete from t_site_tree
+        where id = #{id} and parentId = #{parentId}
+    </delete>
+
+    <insert id="add" parameterType="com.chinamcloud.api.model.SiteTree" flushCache="true">
+        insert into t_site_tree
+        (id, parentId, `name`, sourceId, isLeaf) value (
+          #{id},
+          #{parentId},
+          #{name},
+          #{sourceId},
+          #{isLeaf}
+        )
+    </insert>
+
+</mapper>
