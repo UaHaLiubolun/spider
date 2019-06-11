@@ -1,11 +1,10 @@
 package cn.stark.spider.common.spider;
 
-import cn.stark.spider.common.Request;
 
-public interface Scheduler {
+public interface Scheduler<E> {
 
-    void push(Request request);
+    void push(E request);
 
 
-    Request poll();
+    E poll();
 }

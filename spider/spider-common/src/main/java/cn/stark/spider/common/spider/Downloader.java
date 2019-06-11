@@ -12,4 +12,6 @@ public interface Downloader {
      * @return 页面
      */
     Page download(Request request);
+
+    void asyncDownload(Request request);
 }
