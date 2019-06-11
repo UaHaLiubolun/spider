@@ -1,9 +1,12 @@
 package cn.stark.spider.common;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ResultItems {
+public class ResultItems implements Serializable {
+
+    private static final long serialVersionUID = 2062192174891352043L;
 
     private Map<String, Object> fields = new LinkedHashMap<String, Object>();
 

@@ -3,26 +3,30 @@ import cn.stark.spider.common.selector.Html;
 import cn.stark.spider.common.selector.Json;
 import cn.stark.spider.common.selector.Selectable;
 import cn.stark.spider.common.utils.UrlUtils;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Page {
+public class Page implements Serializable {
+
+    private static final long serialVersionUID = 2062192774891352143L;
 
     private Request request;
 
     private ResultItems resultItems = new ResultItems();
 
-    private Html html;
+    private transient Html html;
 
-    private Json json;
+    private transient Json json;
 
     private String rawText;
 
-    private Selectable url;
+    private transient Selectable url;
 
     private Map<String,List<String>> headers;
 

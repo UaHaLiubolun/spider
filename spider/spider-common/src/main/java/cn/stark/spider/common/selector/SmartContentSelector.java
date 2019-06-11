@@ -1,6 +1,7 @@
 package cn.stark.spider.common.selector;
 
-import us.codecraft.webmagic.utils.Experimental;
+
+import cn.stark.spider.common.utils.Experimental;
 
 import java.util.ArrayList;
 import java.util.Arrays;
