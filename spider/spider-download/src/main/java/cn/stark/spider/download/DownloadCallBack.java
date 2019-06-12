@@ -22,7 +22,7 @@ public class DownloadCallBack implements Callback {
 
     @Override
     public void onFailure(Call call, IOException e) {
-
+        e.printStackTrace();
     }
 
     @Override

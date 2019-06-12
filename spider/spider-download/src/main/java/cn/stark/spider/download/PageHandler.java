@@ -23,6 +23,7 @@ public class PageHandler {
             }
             page.setCharset(charset);
         }
+        page.setRequest(request);
         page.setUrl(new PlainText(request.getUrl()));
         page.setStatusCode(response.code());
         page.setDownloadSuccess(true);

@@ -11,6 +11,7 @@
     <modules>
         <module>spider-download</module>
         <module>spider-common</module>
+        <module>spider-process</module>
     </modules>
 
     <properties>
