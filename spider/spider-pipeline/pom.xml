@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spider-process</artifactId>
+    <artifactId>spider-pipeline</artifactId>
 
     <dependencies>
         <dependency>
@@ -17,10 +17,10 @@
             <artifactId>spider-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
-            <groupId>cn.stark</groupId>
-            <artifactId>spider-pipeline</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
         </dependency>
     </dependencies>
 

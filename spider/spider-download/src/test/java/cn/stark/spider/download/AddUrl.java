@@ -15,16 +15,16 @@ public class AddUrl {
     /**
      * 排序
      * S 评分
-     * T 标价
+     * T 标记
      * U 热门
      * R 最新
      */
-    private static String sort = "";
+    private static String sort = "S";
 
     public static void main(String[] args) {
         RedissonClient redissonClient = Redisson.create();
         Scheduler<Request> requestScheduler = new RedisScheduler<>("request", redissonClient);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 300; i++) {
             requestScheduler.push(new Request(generateUrl(i * 20)));
         }
         redissonClient.shutdown();
