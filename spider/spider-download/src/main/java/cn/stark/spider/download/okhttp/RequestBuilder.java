@@ -1,4 +1,4 @@
-package cn.stark.spider.download;
+package cn.stark.spider.download.okhttp;
 
 import okhttp3.Request;
 

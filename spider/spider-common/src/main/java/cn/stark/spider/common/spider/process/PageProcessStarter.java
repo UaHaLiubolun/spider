@@ -36,7 +36,7 @@ public class PageProcessStarter implements Runnable {
             try {
                 Page page = pageScheduler.poll();
                 if (page == null) {
-                    logger.info("没有任务需要分析了，我要睡觉了");
+//                    logger.info("没有任务需要分析了，我要睡觉了");
                     Thread.sleep(5000);
                 } else {
                     executorService.execute(() -> pageProcesser.process(page));

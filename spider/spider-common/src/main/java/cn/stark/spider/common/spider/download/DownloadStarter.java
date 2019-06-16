@@ -38,7 +38,7 @@ public class DownloadStarter implements Runnable {
             try {
                 Request request = requestScheduler.poll();
                 if (request == null) {
-                    logger.info("暂时没有任务需要下载，睡觉了");
+//                    logger.info("暂时没有任务需要下载，睡觉了");
                     Thread.sleep(1000);
                     continue;
                 }

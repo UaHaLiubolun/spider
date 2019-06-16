@@ -32,7 +32,7 @@ public class Page implements Serializable {
 
     private int statusCode = 200;
 
-    private boolean downloadSuccess = true;
+    private boolean downloadSuccess = false;
 
     private byte[] bytes;
 
