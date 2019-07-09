@@ -13,7 +13,7 @@ public class AddUrl {
 
     private static String tag = "电影";
 
-    private static String range = "7,10";
+    private static String range = "5,10";
 
     /**
      * 排序
@@ -22,12 +22,12 @@ public class AddUrl {
      * U 热门
      * R 最新
      */
-    private static String sort = "U";
+    private static String sort = "S";
 
     /**
      * 类型
      */
-    private static String genres = "";
+    private static String genres = "情色";
 
     /**
      * 国家
@@ -42,7 +42,7 @@ public class AddUrl {
     public static void main(String[] args) {
         RedissonClient redissonClient = Redisson.create(RedisConfig.getConfig());
         Scheduler<Request> requestScheduler = new RedisScheduler<>("request", redissonClient);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 200; i++) {
             requestScheduler.push(new Request(generateUrl(i * 20)));
         }
         redissonClient.shutdown();

@@ -16,7 +16,7 @@ public class DownloadApplication {
         HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
         httpClientDownloader.setScheduler(new RedisScheduler<>("page", redissonClient));
         httpClientDownloader.setThread(10);
-        httpClientDownloader.setProxyProvider(new SingleProxyProvider());
+//        httpClientDownloader.setProxyProvider(new SingleProxyProvider());
         DownloadStarter httpClientStarter = DownloadStarter.create(httpClientDownloader);
         httpClientStarter.setRequestScheduler(new RedisScheduler<>("request", redissonClient));
         httpClientStarter.run();

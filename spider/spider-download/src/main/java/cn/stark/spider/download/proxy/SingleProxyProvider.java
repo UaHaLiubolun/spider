@@ -23,9 +23,15 @@ public class SingleProxyProvider implements ProxyProvider {
 
     private Lock lock = new ReentrantLock();
 
+    private int count = 0;
+
     @Override
     public void returnProxy(Proxy proxy, Page page) {
         lock.lock();
+        count++;
+        if (count > 100) {
+            this.proxy = null;
+        }
         if (!page.isDownloadSuccess()) {
             this.proxy = null;
         }
@@ -56,7 +62,7 @@ public class SingleProxyProvider implements ProxyProvider {
             ProxyResult proxyResult = JSON.parseObject(r, ProxyResult.class);
             return proxyResult.get();
         }
-        catch (IOException e) {
+        catch (Exception e) {
             logger.error("获取代理IP失败");
         }
         return null;

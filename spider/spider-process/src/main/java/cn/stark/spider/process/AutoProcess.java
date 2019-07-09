@@ -2,15 +2,13 @@ package cn.stark.spider.process;
 
 import cn.stark.spider.common.Page;
 import cn.stark.spider.common.spider.PageProcesser;
-import cn.stark.spider.pipline.mongodb.MongoDBPipline;
-import cn.stark.spider.process.douban.pojo.Movie;
 import cn.stark.spider.process.douban.pojo.MovieResult;
 import com.alibaba.fastjson.JSON;
 
 
 public class AutoProcess implements PageProcesser {
 
-    private MongoDBPipline<Movie> mongoDBPipline = new MongoDBPipline<>(Movie.class);
+    private MoviePipline mongoDBPipline = new MoviePipline();
 
     @Override
     public void process(Page page) {
