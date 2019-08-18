@@ -1,5 +1,6 @@
 package cn.stark.spider.pipline.mongodb;
 
+import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;
@@ -26,7 +27,7 @@ public class MongoDBClient {
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 
-        MongoClientSettings settings = MongoClientSettings.builder()
+        MongoClientSettings settings = MongoClientSettings.builder().applyConnectionString(new ConnectionString("mongodb://132.232.103.174:27017"))
                 .codecRegistry(pojoCodecRegistry)
                 .build();
         return MongoClients.create(settings);

@@ -7,7 +7,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-import java.util.Collections;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;

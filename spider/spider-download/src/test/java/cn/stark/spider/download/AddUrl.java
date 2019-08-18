@@ -22,17 +22,17 @@ public class AddUrl {
      * U 热门
      * R 最新
      */
-    private static String sort = "S";
+    private static String sort = "U";
 
     /**
      * 类型
      */
-    private static String genres = "情色";
+    private static String genres = "";
 
     /**
      * 国家
      */
-    private static String countries = "";
+    private static String countries = "韩国";
 
     /**
      * 年代
@@ -42,14 +42,14 @@ public class AddUrl {
     public static void main(String[] args) {
         RedissonClient redissonClient = Redisson.create(RedisConfig.getConfig());
         Scheduler<Request> requestScheduler = new RedisScheduler<>("request", redissonClient);
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < 100; i++) {
             requestScheduler.push(new Request(generateUrl(i * 20)));
         }
         redissonClient.shutdown();
     }
 
     private static String generateUrl(int start) {
-        String url =  baseUrl + "range=" + range + "&tags=" + tag + "&sort=" + sort + "&start=" + start;
+        String url =  baseUrl + "sort=" + sort +  "&range=" + range + "&tags=" + tag +  "&start=" + start;
         if (!countries.equals("")) {
             url += ("&countries=" + countries);
         }
