@@ -15,7 +15,7 @@ public class PageProcessStarter implements Runnable {
 
     private Scheduler<Page> pageScheduler;
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(12);
+    private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     private PageProcesser pageProcesser;
 

@@ -9,28 +9,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spider-download</artifactId>
-
+    <artifactId>spider-starter</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
         <dependency>
             <groupId>cn.stark</groupId>
             <artifactId>spider-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
+            <groupId>cn.stark</groupId>
+            <artifactId>spider-process</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>cn.stark</groupId>
+            <artifactId>spider-download</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -41,7 +40,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>cn.stark.spider.download.DownloadApplication</mainClass>
+                            <mainClass>cn.stark.spider.starter.Application</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

@@ -13,6 +13,7 @@
         <module>spider-common</module>
         <module>spider-process</module>
         <module>spider-pipeline</module>
+        <module>spider-starter</module>
     </modules>
 
     <properties>
