@@ -22,14 +22,6 @@ public class Movie {
 
     private String url;
 
-    private List<String> tags = new LinkedList<>();
-
-    private List<String> genres = new LinkedList<>();
-
-    private List<String> countries = new LinkedList<>();
-
-    private String year_range;
-
     private List<String> casts = new LinkedList<>();
 
     private String cover;
@@ -40,4 +32,12 @@ public class Movie {
     private int cover_y;
 
     private Date date = new Date();
+
+    private List<String> tags = new LinkedList<>();
+
+    private List<String> genres = new LinkedList<>();
+
+    private List<String> countries = new LinkedList<>();
+
+    private String year_range;
 }
