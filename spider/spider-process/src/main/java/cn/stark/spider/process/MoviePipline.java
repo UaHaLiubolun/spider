@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -31,7 +32,8 @@ public class MoviePipline {
             FindIterable<Movie> movies = mongoCollection.find(eq("movie_id", m.getMovie_id()));
             MongoCursor<Movie> cursor = movies.iterator();
             if (cursor.hasNext()) {
-                updateTags(cursor.next(), m);
+                Movie oldMove = cursor.next();
+                updateTags(oldMove, m);
                 mongoCollection.replaceOne(eq("movie_id", m.getMovie_id()), m);
             } else {
                 mongoCollection.insertOne(m);
@@ -44,21 +46,24 @@ public class MoviePipline {
             newMovie.setYear_range(oldMovie.getYear_range());
         }
         List<String> oldTags = oldMovie.getTags();
-        List<String> newTags = newMovie.getTags();
+        List<String> newTags = new ArrayList<>(newMovie.getTags());
+        newMovie.setTags(newTags);
         for (String s : oldTags) {
             if (!newTags.contains(s)) {
                 newTags.add(s);
             }
         }
         List<String> oldC = oldMovie.getCountries();
-        List<String> newC = newMovie.getCountries();
+        List<String> newC =  new ArrayList<>(newMovie.getCountries());
+        newMovie.setCountries(newC);
         for (String s : oldC) {
             if (!newC.contains(s)) {
                 newC.add(s);
             }
         }
         List<String> oldG = oldMovie.getGenres();
-        List<String> newG = newMovie.getGenres();
+        List<String> newG = new ArrayList<>(newMovie.getGenres());
+        newMovie.setGenres(newG);
         for (String s : oldG) {
             if (!newG.contains(s)) {
                 newG.add(s);
