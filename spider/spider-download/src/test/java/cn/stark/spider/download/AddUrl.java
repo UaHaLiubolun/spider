@@ -9,7 +9,6 @@ import cn.stark.spider.common.utils.RedisConfig;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 
-import java.util.Collections;
 import java.util.List;
 
 public class AddUrl {
@@ -18,7 +17,7 @@ public class AddUrl {
         RedissonClient redissonClient = Redisson.create(RedisConfig.getConfig());
         Scheduler<Request> requestScheduler = new RedisScheduler<>("request", redissonClient);
         DouBanRequest request = DouBanRequestBuilder.douBanRequestBuilder().withTags("电影").build();
-        List<Request> requests = request.generateRequest(1);
+        List<Request> requests = request.generateRequest(200);
         requests.forEach(requestScheduler::push);
         redissonClient.shutdown();
     }

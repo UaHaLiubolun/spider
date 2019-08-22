@@ -37,7 +37,7 @@ public class DouBanRequest implements Serializable {
      * U 热门
      * R 最新
      */
-    private String sort = "U";
+    private String sort = "S";
 
     private String range = "5,10";
 
