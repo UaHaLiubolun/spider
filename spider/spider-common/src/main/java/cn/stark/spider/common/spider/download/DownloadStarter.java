@@ -42,6 +42,7 @@ public class DownloadStarter implements Runnable {
                     Thread.sleep(1000);
                     continue;
                 }
+                Thread.sleep(10000);
                 executorService.execute(() -> downloader.asyncDownload(request));
             } catch (Exception e) {
                 e.printStackTrace();

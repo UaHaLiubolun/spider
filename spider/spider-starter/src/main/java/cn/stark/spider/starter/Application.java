@@ -34,7 +34,7 @@ public class Application {
         thread.start();
         HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
         httpClientDownloader.setScheduler(new RedisScheduler<>(PAGE, redissonClient));
-        httpClientDownloader.setThread(2);
+        httpClientDownloader.setThread(1);
         DownloadStarter httpClientStarter = DownloadStarter.create(httpClientDownloader);
         httpClientStarter.setRequestScheduler(new RedisScheduler<>("request", redissonClient));
         httpClientStarter.run();

@@ -18,7 +18,14 @@ public class AddUrl {
         Scheduler<Request> requestScheduler = new RedisScheduler<>("request", redissonClient);
         DouBanRequest request = DouBanRequestBuilder.douBanRequestBuilder().withTags("电影").build();
         List<Request> requests = request.generateRequest(200);
-        requests.forEach(requestScheduler::push);
+        requests.forEach(r -> {
+            try {
+                Thread.sleep(1000);
+                requestScheduler.push(r);
+            } catch (Exception e) {
+
+            }
+        });
         redissonClient.shutdown();
     }
 
